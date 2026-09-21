@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "webaudit"
+version = "0.1.0"
+description = "Passive web security posture auditor with zero runtime dependencies"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Mursha3" }]
+keywords = ["security", "audit", "headers", "csp", "tls", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+  "Environment :: Console",
+]
+
+[project.optional-dependencies]
+deep = ["cryptography>=41.0"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+webaudit = "webaudit.cli:main"
+
+[tool.setuptools]
+packages = ["webaudit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"

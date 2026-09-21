@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# Audit output produced by webaudit
+*.audit.json
+*audit-report.md
+
+# Personal notes and local tooling metadata - never publish these
+ROADMAP.md
+project-id
