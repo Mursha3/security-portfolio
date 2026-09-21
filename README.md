@@ -32,6 +32,28 @@ certificate *and* explain why validation failed.
 See the [tool README](tools/webaudit/README.md) for the check catalogue and
 build instructions.
 
+### [logtriage](tools/logtriage) — authentication log triage
+
+Python, zero runtime dependencies, 16 detection rules, 130 tests, CI on GitHub
+Actions. Takes `auth.log` (plain or `.gz`, or a pipe) and reports the events
+worth a human's attention: brute force and password spraying, a login that
+succeeds right after failed attempts, `sudo` used to open a shell or fetch a
+payload, new accounts, privileged group changes, and cron jobs that download and
+run code. Findings are mapped to MITRE ATT&CK and escalated by rate, not fired
+once.
+
+```
+logtriage /var/log/auth.log --md report.md --fail-on high
+zgrep sshd /var/log/auth.log.*.gz | logtriage - --window 30m
+```
+
+Exit `2` means findings at or above the threshold, `3` means the tool could not
+read its input — a pipeline can tell a clean host from a run that never happened.
+Two design choices carry over from webaudit on purpose: every detection rule is a
+state machine with no I/O, which is why the detection surface is tested with
+hand-written log lines, and the console output ends with the rules that ran and
+matched nothing, so a quiet report cannot be confused with a crashed check.
+
 ## Writeups
 
 Vulnerability disclosures and lab walkthroughs live in [`writeups/`](writeups).
@@ -40,10 +62,11 @@ root cause, impact, fix, and a dated disclosure timeline.
 
 ## How this repository grows
 
-The next steps are deliberate: more checks in `webaudit`, a baseline diff mode so
-runs can be compared between deploys, writeups in `writeups/` as disclosures are
-coordinated, and a detection lab wired up so the same lab can be shown from both
-sides — how it breaks and how it gets caught.
+The next steps are deliberate: a baseline diff mode in both tools so runs can be
+compared between deploys instead of read from scratch, deeper server-side checks
+in `webaudit` now that the transport layer is settled, writeups in `writeups/` as
+disclosures are coordinated, and a detection lab wired up so the same lab can be
+shown from both sides — how it breaks and how it gets caught.
 
 ## Ground rules I hold myself to
 
