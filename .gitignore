@@ -12,6 +12,7 @@ venv/
 *.audit.json
 *audit-report.md
 
-# Personal notes and local tooling metadata - never publish these
+# Personal notes, CV and local tooling metadata - never publish these
 ROADMAP.md
 project-id
+cv/
