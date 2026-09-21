@@ -16,3 +16,6 @@ venv/
 ROADMAP.md
 project-id
 cv/
+
+# Cloned third-party sources, PoCs and undisclosed reports - never commit
+research/scratch/
