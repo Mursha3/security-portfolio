@@ -1,5 +1,9 @@
 # webaudit
 
+[![CI](https://github.com/Mursha3/security-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/Mursha3/security-portfolio/actions/workflows/ci.yml)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/downloads/)
+[![Dependencies: none](https://img.shields.io/badge/runtime%20dependencies-none-brightgreen)](pyproject.toml)
+
 A passive web security posture auditor. One command, a scored report, and no
 runtime dependencies — it runs on a bare Python install.
 

@@ -1,5 +1,7 @@
 # Security portfolio
 
+[![CI](https://github.com/Mursha3/security-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/Mursha3/security-portfolio/actions/workflows/ci.yml)
+
 Practical security work, built and tested in the open. Everything here is
 read-only or runs against infrastructure I own — no scanning of systems I am not
 authorised to touch.
